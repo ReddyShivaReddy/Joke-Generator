@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <div class="heading">
+
+
+            <h1>Joke Generator..</h1>
+        </div>
+        <div class="box">
+            <p id="txt">Why did the banana go see a doctor? Because it wasn't peeling well</p>
+            <button id="generate">Generate joke</button>
+        </div>
+    </div>
+    <script>
+        let changingtext="Why did the banana go see a doctor? Because it wasn't peeling well";
+        function foo(){
+            fetch("https://v2.jokeapi.dev/joke/Any?format=txt&safe-mode")
+            .then(res=>res.text())
+            .then(ans=>{
+                changingtext=ans;
+            })
+            let joke=document.getElementById("txt");
+                joke.innerHTML=changingtext;
+        }
+        let btn=document.getElementById("generate");
+        btn.addEventListener("click",foo);
+    </script>
+</body>
+</html>
